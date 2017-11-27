@@ -1,0 +1,25 @@
+on init
+    # Load Tuxera exfat module
+    insmod /system/lib/modules/texfat.ko
+
+on fs
+    mount ext4 /dev/block/bootdevice/by-name/vendor /vendor ro
+    symlink /vendor /system/vendor
+
+on boot
+    start chargeled
+
+
+
+service chargeled /sbin/chargeled
+    disabled
+    seclabel u:r:healthd:s0
+
+service detect_key /sbin/detect_key
+    disabled
+    seclabel u:r:healthd:s0
+    oneshot
+
+service offmode_charging /sbin/offmode_charging
+    disabled
+    seclabel u:r:healthd:s0
