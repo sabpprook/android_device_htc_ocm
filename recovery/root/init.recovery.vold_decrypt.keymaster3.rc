@@ -7,7 +7,7 @@
 
 # The seclabels are not needed when built in Android 8.0 tree
 # in 7.1 however the below do not exist, so run them under vold
-service ven_keymaster-3-0 /vendor/bin/hw/android.hardware.keymaster@3.0-service-qti
+service ven_keymaster3 /vendor/bin/hw/android.hardware.keymaster@3.0-service-qti
     user root
     group root
     setenv PATH /vendor/bin:/system/bin

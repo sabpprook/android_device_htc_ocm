@@ -4,12 +4,10 @@ on init
 
 on fs
     mount ext4 /dev/block/bootdevice/by-name/vendor /vendor ro
-    symlink /vendor /system/vendor
+    #symlink /vendor /system/vendor
 
 on boot
     start chargeled
-
-
 
 service chargeled /sbin/chargeled
     disabled
