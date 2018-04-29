@@ -3,7 +3,7 @@ on init
     insmod /system/lib/modules/texfat.ko
 
 on fs
-    #mount ext4 /dev/block/bootdevice/by-name/vendor /vendor ro
+    mount ext4 /dev/block/bootdevice/by-name/vendor /vendor ro
     #symlink /vendor /system/vendor
 
 on boot

@@ -17,7 +17,7 @@
 #
 # Everything in this directory will become public
 
-PRODUCT_SHIPPING_API_LEVEL := 25
+PRODUCT_SHIPPING_API_LEVEL := 26
 
 #LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 
