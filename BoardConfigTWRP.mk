@@ -14,7 +14,7 @@ BOARD_VENDOR := htc
 TARGET_INIT_VENDOR_LIB := libinit_$(TARGET_DEVICE)
 TARGET_UNIFIED_DEVICE := true
 
-# Set recovery type
+# Recovery
 RECOVERY_VARIANT := twrp
 
 # TWRP Build Flags
@@ -26,12 +26,15 @@ TW_DEFAULT_BRIGHTNESS := 178
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_HAS_DOWNLOAD_MODE := true
 TW_INCLUDE_CRYPTO := true
-TW_CRYPTO_USE_SYSTEM_VOLD := qseecomd hwservicemanager keymaster3
+TW_CRYPTO_USE_SYSTEM_VOLD := qseecomd hwservicemanager keymaster-3-0
 #TW_INCLUDE_NTFS_3G := true
 TW_NO_EXFAT_FUSE := true
-TARGET_RECOVERY_QCOM_RTC_FIX := true
 TARGET_RECOVERY_DEVICE_MODULES := chargeled
 TW_INPUT_BLACKLIST := "hbtp_vm"
+
+TARGET_RECOVERY_QCOM_RTC_FIX := true
+TARGET_RECOVERY_DEVICE_MODULE := tzdata
+TW_RECOVERY_ADDITIONAL_RELINK_FILES += $(TARGET_OUT)/usr/share/zoneinfo/tzdata
 
 # TWRP Debug Flags
 #TWRP_EVENT_LOGGING := true

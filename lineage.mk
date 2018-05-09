@@ -14,9 +14,6 @@
 # limitations under the License.
 #
 
-# Sample: This is where we'd set a backup provider if we had one
-# $(call inherit-product, device/sample/products/backup_overlay.mk)
-
 # Inherit TWRP device configuration
 $(call inherit-product-if-exists, device/htc/ocm/twrp_ocm.mk)
 

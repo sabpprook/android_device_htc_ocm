@@ -1,10 +1,7 @@
 on init
     # Load Tuxera exfat module
     insmod /system/lib/modules/texfat.ko
-
-on fs
-    mount ext4 /dev/block/bootdevice/by-name/vendor /vendor ro
-    #symlink /vendor /system/vendor
+    mkdir /vendor
 
 on boot
     start chargeled
