@@ -34,6 +34,14 @@ ifneq ($(TARGET_USES_AOSP),true)
 TARGET_USES_QCOM_BSP := true
 endif
 
+# Keymaster 3
+NEW_PLATFORM_VERSION := 8.0.0
+NEW_PLATFORM_SECURITY_PATCH := 2017-12-01
+
+BOARD_RECOVERY_IMAGE_PREPARE := \
+    sed -i 's/ro.build.version.security_patch=.*/ro.build.version.security_patch=$(NEW_PLATFORM_SECURITY_PATCH)/g' $(TARGET_RECOVERY_ROOT_OUT)/prop.default ;\
+    sed -i 's/ro.build.version.release=.*/ro.build.version.release=$(NEW_PLATFORM_VERSION)/g' $(TARGET_RECOVERY_ROOT_OUT)/prop.default ;
+
 BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200,n8 androidboot.console=ttyMSM0
 BOARD_KERNEL_CMDLINE += user_debug=31 ehci-hcd.park=3 lpm_levels.sleep_disabled=1
 BOARD_KERNEL_CMDLINE += sched_enable_hmp=1 sched_enable_power_aware=1 service_locator.enable=1
@@ -43,7 +51,7 @@ BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --second_offset 0x00f00000 --tags_offset 0x00000100 --board recovery:0
-BOARD_MKBOOTIMG_ARGS += --os_version 8.0.0 --os_patch_level 2017-12-01
+BOARD_MKBOOTIMG_ARGS += --os_version $(NEW_PLATFORM_VERSION) --os_patch_level $(NEW_PLATFORM_SECURITY_PATCH)
 
 TARGET_PREBUILT_KERNEL := device/htc/$(TARGET_DEVICE)/kernel
 
