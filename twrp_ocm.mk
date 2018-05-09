@@ -17,5 +17,9 @@
 # Inherit device configuration
 $(call inherit-product, device/htc/ocm/aosp_ocm.mk)
 
+# Time Zone data for Recovery
+PRODUCT_COPY_FILES += \
+    bionic/libc/zoneinfo/tzdata:recovery/root/system/usr/share/zoneinfo/tzdata
+
 PRODUCT_MANUFACTURER := HTC
 PRODUCT_MODEL := HTC U11 plus
