@@ -17,22 +17,18 @@
 #
 # Everything in this directory will become public
 
-PRODUCT_SHIPPING_API_LEVEL := 26
-
 #LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 
 #PRODUCT_COPY_FILES += \
 #    $(LOCAL_KERNEL):kernel
 
+PRODUCT_SHIPPING_API_LEVEL := 26
+
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
-$(call inherit-product, device/htc/ocm/common/common64.mk)
 
 # For android_filesystem_config.h
 PRODUCT_PACKAGES += fs_config_files \
                     fs_config_dirs
-
-$(call inherit-product-if-exists, hardware/qcom/msm8998/msm8998.mk)
-$(call inherit-product-if-exists, vendor/qcom/gpu/msm8998/msm8998-gpu-vendor.mk)
 
 # b/30349163
 # Set default log size on userdebug/eng build to 1M

@@ -13,8 +13,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# This file includes all definitions that apply to ALL marlin devices
-#
-# Everything in this directory will become public
 
 -include device/htc/ocm/device-common.mk
