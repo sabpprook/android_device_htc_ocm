@@ -1,0 +1,21 @@
+import /init.recovery.vold_decrypt.rc
+
+on early-init
+    wait /dev/block/bootdevice
+    start patchlevel
+
+on fs
+    wait /dev/block/platform/soc/${ro.boot.bootdevice}
+    symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+    insmod /system/lib/modules/texfat.ko
+
+on boot
+    export LD_CONFIG_FILE /sbin/ld.config.txt
+    start chargeled
+	
+    # Workaround for adb not coming up
+    setprop sys.usb.config adb
+
+service chargeled /sbin/chargeled
+    disabled
+    seclabel u:r:healthd:s0

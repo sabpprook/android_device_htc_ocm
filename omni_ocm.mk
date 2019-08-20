@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2016 The Android Open-Source Project
+# Copyright 2017 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,12 +14,14 @@
 # limitations under the License.
 #
 
-# Inherit TWRP device configuration
-$(call inherit-product-if-exists, device/htc/ocm/twrp_ocm.mk)
+$(call inherit-product, build/target/product/embedded.mk)
 
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/omni/config/common.mk)
 
+## Device identifier. This must come after all inclusions
+PRODUCT_DEVICE := ocm
 PRODUCT_NAME := omni_ocm
 PRODUCT_BRAND := htc
-PRODUCT_DEVICE := ocm
+PRODUCT_MODEL := HTC U11+
+PRODUCT_MANUFACTURER := HTC
